@@ -1,3 +1,9 @@
+# Ignorar arquivos e pastas do VSCode
+.vscode/
+
+# Ignorar pastas de build geradas
+build/
+
 # Prerequisites
 *.d
 

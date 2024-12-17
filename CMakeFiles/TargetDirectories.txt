@@ -1,0 +1,5 @@
+C:/Users/gabri/Desktop/Sillion - Desafio Tecnico/Firmware/stm32-sillion-acionate-dc-motor/CMakeFiles/stm32-sillion-acionate-dc-motor.dir
+C:/Users/gabri/Desktop/Sillion - Desafio Tecnico/Firmware/stm32-sillion-acionate-dc-motor/CMakeFiles/edit_cache.dir
+C:/Users/gabri/Desktop/Sillion - Desafio Tecnico/Firmware/stm32-sillion-acionate-dc-motor/CMakeFiles/rebuild_cache.dir
+C:/Users/gabri/Desktop/Sillion - Desafio Tecnico/Firmware/stm32-sillion-acionate-dc-motor/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+C:/Users/gabri/Desktop/Sillion - Desafio Tecnico/Firmware/stm32-sillion-acionate-dc-motor/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
