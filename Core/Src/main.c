@@ -7,10 +7,14 @@
 
 void SystemClock_Config(void);
 
-dc_motor_t *motor;
+dc_motor_t motor;
 
 int main(void)
 {
+
+  uint32_t millisMotor = HAL_GetTick(); // Variavel para armazenar os ticks do microcontrolador
+  uint8_t buttonIsPressed = 0;          // Variavel para armazenar o estado do push button
+  uint8_t desiredVoltage = 5;           // Variavel que define a tensao de acionamento do motor
 
   // Inicializada da biblioteca de abstracao de hardware
   HAL_Init();
@@ -23,14 +27,44 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM1_Init();
 
-  while (1)
-  {
+  // Inicializando o driver do motor
+  InitializeDcMotor(&motor, IN1_GPIO_Port, IN1_Pin, IN2_GPIO_Port, IN2_Pin, ENABLEA_GPIO_Port, ENABLEA_Pin);
+
+  // Inicializando o display LCD 16x2
+  InitializeLCD();  
+  PutCursorLCD(0, 0);
+  SendStringLCD("Motor Desligado");
+
+  while (1){
+
+    // Verificando o estado do botao
+    buttonIsPressed = HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin);
+
+    // Logica para acionamento e indicacao do estado do motor
+    if(buttonIsPressed){
+
+      millisMotor = HAL_GetTick();
+      StartDcMotor(&motor, desiredVoltage);
+
+      PutCursorLCD(0, 0);
+      SendStringLCD("Motor Ligado");
+    
+    }
+
+    if((HAL_GetTick() - millisMotor) > 10000){
+      StopDcMotor(&motor);
+
+      PutCursorLCD(0, 0);
+      SendStringLCD("Motor Desligado");
+    
+    }
 
   }
 }
 
-void SystemClock_Config(void)
-{
+// Funcao gerada pelo STM32CubeMX para configuracao do clock do microcontrolador
+void SystemClock_Config(void){
+
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
@@ -65,7 +99,7 @@ void SystemClock_Config(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
   if(htim->Instance == TIM1)
-    HAL_GPIO_TogglePin(motor->in1_port, motor->in1_pin);
+    HAL_GPIO_TogglePin(motor.in1_port, motor.in1_pin);
 
 }
 

@@ -4,25 +4,25 @@ void InitializeLCD(void){
 
   // Inicializando o LCD no modo de 4 bits
   HAL_Delay(50);  
-  lcd_send_cmd (0x30);
+  SendCmdLCD (0x30);
   HAL_Delay(5);  
-  lcd_send_cmd (0x30);
+  SendCmdLCD (0x30);
   HAL_Delay(1);  
-  lcd_send_cmd (0x30);
+  SendCmdLCD (0x30);
   HAL_Delay(10);
-  lcd_send_cmd (0x20);  
+  SendCmdLCD (0x20);  
   HAL_Delay(10);
 
   // Inicializando o display
-  lcd_send_cmd (0x28);   
+  SendCmdLCD (0x28);   
   HAL_Delay(1);
-  lcd_send_cmd (0x08); 
+  SendCmdLCD (0x08); 
   HAL_Delay(1);
-  lcd_send_cmd (0x01);  
+  SendCmdLCD (0x01);  
   HAL_Delay(2);
-  lcd_send_cmd (0x06);
+  SendCmdLCD (0x06);
   HAL_Delay(1);
-  lcd_send_cmd (0x0C);
+  SendCmdLCD (0x0C);
 
 }
 
