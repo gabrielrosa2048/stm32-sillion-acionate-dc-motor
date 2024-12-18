@@ -3,6 +3,7 @@
 #include "tim.h"
 #include "gpio.h"
 #include "h_bridge.h"
+#include "lcd_pcf8574.h"
 
 void SystemClock_Config(void);
 
@@ -10,7 +11,6 @@ dc_motor_t *motor;
 
 int main(void)
 {
-
 
   // Inicializada da biblioteca de abstracao de hardware
   HAL_Init();
@@ -64,7 +64,7 @@ void SystemClock_Config(void)
 // Funcao utilizada para gerar o sinal de PWM no pino de entrada do driver de motor de passo
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
-  if(htim->Instance == &htim1)
+  if(htim->Instance == TIM1)
     HAL_GPIO_TogglePin(motor->in1_port, motor->in1_pin);
 
 }

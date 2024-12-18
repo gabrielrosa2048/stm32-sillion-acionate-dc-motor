@@ -49,6 +49,7 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     ${PROJECT_SOURCE_DIR}/Core/Src/h_bridge.c
+    ${PROJECT_SOURCE_DIR}/Core/Src/lcd_pcf8574.c
 )
 
 # Add include paths
